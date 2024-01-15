@@ -14,5 +14,5 @@ rem echo z%hour%z
 rem echo z%minute%z
 set /a hour=hour*60
 set /a total=hour+minute
-if defined args if "%args%"=="/s" (echo %total%&echo %total% >>%savetofile%) else (goto :eof)
+if defined args if "%args%"=="/s" (echo %total% >>%savetofile%) 
 echo %total%
