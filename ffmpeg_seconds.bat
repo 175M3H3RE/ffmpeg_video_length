@@ -52,7 +52,8 @@ if defined args if "%args%"=="/s" (echo.X&echo %total% >>%savetofile%)
 echo %total% seconds
 :save
 echo|set/p= . .  .
-choice /c 1ST96habdefgijklmnopqruvwz0234578 /N /m "E n t e   r     c  om m a nd  i n  3 se c o n  d s:   _   ?" /t 3 /d Z
+choice /c 1ST96habdefgijklmnopqruvwz0234578 /N /m "                 [Enter a key] in 3 seconds:   _   ?" /t 3 /d Z
+echo.
 set /a boom=0
 if %errorlevel%==1 (echo..-X-&echo %total% >>%savetofile%&title Saved to file %savetofile%) 
 if %errorlevel%==2 (echo..-X-x-X-.&echo %total% >>%savetofile%&title Saved to file %savetofile%) 
