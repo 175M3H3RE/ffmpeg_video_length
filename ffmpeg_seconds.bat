@@ -59,9 +59,11 @@ if %errorlevel%==1 (echo..-X-&echo %total% >>%savetofile%&title Saved to file %s
 if %errorlevel%==2 (echo..-X-x-X-.&echo %total% >>%savetofile%&title Saved to file %savetofile%) 
 if %errorlevel%==3 if exist  %savetofile% type %savetofile%&set /a boom=1
 if %errorlevel%==4 (echo.Clearing file in 30 seconds.&echo.Press any key to clear immediately&echo.Close Window to avoid..&pause >NUL&timeout 30 &del %savetofile%)
-if %errorlevel%==5 echo|set/p=....  To Clipboard&echo|set/p=%total%|clip&set /a boom=1&echo.
+if %errorlevel%==5 echo|set/p=.... !! To Clipboard&echo|set/p=%total%|clip&echo.
 if %errorlevel%==6 set /a boom=1
-if %boom%==1 echo -Help Menu ~ (H)  .Show this menu.  ---^| 1/s = Save ^| t = type/show ^| 9 Delete ^| 6 Clipboard ^|-
+if %boom%==1 echo ----------------------------------------------------------------------------------------------------
+if %boom%==1 echo  Help Menu ~ (H)  .Show this menu.  -  ^| 1/s = Save ^| t = type/show ^| 9 Delete  ^| 6 Clipboard  ^|
+if %boom%==1 echo ----------------------------------------------------------------------------------------------------
 set /a counter+=1
-if %counter% GTR 10 CLS&set /a counter=0&goto funky_loooper
+if %counter% GTR 20 CLS&set /a counter=0&goto funky_loooper
 goto looper
