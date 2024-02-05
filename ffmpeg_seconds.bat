@@ -1,5 +1,5 @@
 @echo off
-
+if "%1" NEQ "chutiya" start cmd /c ""%~fp0" chutiya"& goto :eof
 echo *
 echo * ffmpeg video length calculator (time format hh:mm to seconds)
 echo *-------------------------------------------------------------
@@ -15,6 +15,7 @@ set nonsense_bydefault=%%i
 @echo off
 rem set args=%2
 rem set str=%1
+set str=%str:.=:%
 set savetofile=ffmpeg.time.list.txt
 set tokens_found=
 for /f "tokens=3 delims=:" %%i in ("%str%") do set tokens_found=%%i
