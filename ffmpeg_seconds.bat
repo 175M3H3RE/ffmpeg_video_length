@@ -7,7 +7,7 @@ echo *
 echo * ffmpeg video length calculator (time format hh:mm to seconds)
 echo *-------------------------------------------------------------
 echo [[[[]     Usage: Enter time in MM:SS or HH:MM:SS           []]]]
-echo.Press 1 to Save, Press S to Replay, C CLear X Copy
+echo.Press 1/S Save, (H) Help
 :looper
 set /a hour=0
 set /a minute=0
@@ -28,7 +28,7 @@ if "%tokens_found%" NEQ "%nonsense_bydefault%" (echo %tokens_found%|findstr /r "
 
 :skip3
 title ffmpeg video length calc.
-echo %str%|findstr /r "^[0-9:.]*$">NUL&&echo.>NUL || (echo.Non-number value&goto looper)
+echo %str%|findstr /r "^[0-9:.]*$">NUL&&echo.>NUL || (echo.Non-number value&timeout 5 >NUL&cls&goto funky_loooper)
 set stumped=%%j
 for /f "tokens=1,2 delims=:" %%i in ("%str%") do set /a hour=%%i&if "x%%jx" NEQ "xx" set /a minute=%%j
 echo %hour%|findstr /r "^[0-9]*$">NUL&&echo.>NUL || (echo.Non-number value&goto looper)
@@ -51,8 +51,8 @@ echo %seconds%|findstr /r "^[0-9]*$">NUL&&echo.>NUL || (echo.Non-number value&go
 if defined args if "%args%"=="/s" (echo.X&echo %total% >>%savetofile%) 
 echo %total% seconds
 :save
-echo|set/p=Save 
-choice /c y1SCxhabdefgijklmnopqrtuvwz023456789 /N /m "?                                                 _Y/1/Z/0" /t 4 /d 0
+echo|set/p= . .  .
+choice /c 1ST96habdefgijklmnopqruvwz0234578 /N /m "E n t e   r     c  om m a nd  i n  3 se c o n  d s:   _   ?" /t 3 /d Z
 set /a boom=0
 if %errorlevel%==1 (echo..-X-&echo %total% >>%savetofile%&title Saved to file %savetofile%) 
 if %errorlevel%==2 (echo..-X-x-X-.&echo %total% >>%savetofile%&title Saved to file %savetofile%) 
@@ -60,7 +60,7 @@ if %errorlevel%==3 if exist  %savetofile% type %savetofile%&set /a boom=1
 if %errorlevel%==4 (echo.Clearing file in 30 seconds.&echo.Press any key to clear immediately&echo.Close Window to avoid..&pause >NUL&timeout 30 &del %savetofile%)
 if %errorlevel%==5 echo|set/p=....  To Clipboard&echo|set/p=%total%|clip&set /a boom=1&echo.
 if %errorlevel%==6 set /a boom=1
-if %boom%==1 echo -Help Menu ~ (H)  .Show this menu.  ---^| Y/1 = Save ^| S = Show ^| C Clean File ^| X to Clipb ^|-
+if %boom%==1 echo -Help Menu ~ (H)  .Show this menu.  ---^| 1/s = Save ^| t = type/show ^| 9 Delete ^| 6 Clipboard ^|-
 set /a counter+=1
-if %counter% GTR 5 CLS&set /a counter=0&goto funky_loooper
+if %counter% GTR 10 CLS&set /a counter=0&goto funky_loooper
 goto looper
