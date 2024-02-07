@@ -28,8 +28,8 @@ Exit /B 989
 :afterseterrorlevel
 echo %str% >NUL
 if %errorlevel%==9009 set str="%str%"
-echo %str%| findstr /r "["\"]"&&echo."FOUND erroneous character...."&&(for /f "tokens=1 delims=&" %%i in (%str%) do set str=%%i)
-
+echo %str%|find ")"&&(echo.Illegal Char&goto looper)
+echo %str%| findstr /r "["\"]"&&echo."FOUND erroneous character...."&&(for /f "tokens=1 delims=&()" %%i in (%str%) do set str=%%i)
 (if "%str%"==""  goto looper)
 if %errorlevel%==989 echo.check quote&goto looper
 if %errorlevel%==9009 echo.check invalid quoting&goto looper
