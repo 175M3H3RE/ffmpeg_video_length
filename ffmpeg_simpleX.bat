@@ -1,6 +1,7 @@
 @echo off
-if "%1" NEQ "chutiya" start cmd /c ""%~fp0" chutiya"& goto :eof
+REM if "%1" NEQ "chutiya" start cmd /c ""%~fp0" chutiya"& goto :eof
 set /a counter=0
+set /a run_formickeymouse=0
 :funky_loooper
 title fUNkY raBBiT (C} slEASY Soul .
 echo *
@@ -8,6 +9,7 @@ echo * ffmpeg video length calculator (time format hh:mm to seconds)
 echo *-------------------------------------------------------------
 echo [[[[]     Usage: Enter time in MM:SS or HH:MM:SS           []]]]
 echo.secret command: youtube
+(if defined run_formickeymouse if %run_formickeymouse%==1 Exit /B)
 :looper
 set /a hour=0
 set /a minute=0
@@ -24,14 +26,13 @@ goto afterseterrorlevel
 :seterrorlevel989
 Exit /B 989  
 :afterseterrorlevel
+echo %str% >NUL
 if %errorlevel%==9009 set str="%str%"
 echo %str%| findstr /r "["\"]"&&echo."FOUND erroneous character...."&&(for /f "tokens=1 delims=&" %%i in (%str%) do set str=%%i)
 
-if %errorlevel%==9009 set str="%str%"
-echo %str%| findstr /r "["\"]"&&echo."FOUND erroneous character...." || (if "%str%"==""  goto looper)
+(if "%str%"==""  goto looper)
 if %errorlevel%==989 echo.check quote&goto looper
 if %errorlevel%==9009 echo.check invalid quoting&goto looper
-if "%str%"==""  goto looper
 if /I "%str%"=="cls"  (cls&goto funky_loooper)
 if /I "%str%" NEQ "youtube"  (goto continue)
 :enterurl
@@ -40,7 +41,8 @@ set /a come_here=1
 CALL :seterrorlevel989
 :next_X
 echo %youtube_url%
-if %errorlevel%==9009 set youtube_url="%youtube_Url%"
+if %errorlevel%==9009 Cls&set /a run_formickeymouse=1&CALL :funky_loooper&set youtube_url="%youtube_Url%"
+set /a run_formickeymouse=0
 echo %youtube_url% | findstr /r "["\"]"&&for /f "tokens=1 delims=&" %%i in (%youtube_url%) do set youtube_url=%%i
 echo %youtube_url% | findstr /r "["\"]"&&for /f "tokens=*" %%i in (%youtube_url%) do set youtube_url=%%i
 if %errorlevel%==989 echo.check quote&goto enterurl
