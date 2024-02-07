@@ -1,5 +1,5 @@
 @echo off
-REM if "%1" NEQ "chutiya" start cmd /c ""%~fp0" chutiya"& goto :eof
+if "%1" NEQ "chutiya" start cmd /k ""%~fp0" chutiya"&goto :eof
 set /a counter=0
 set /a run_formickeymouse=0
 :funky_loooper
@@ -34,6 +34,7 @@ echo %str%| findstr /r "["\"]"&&echo."FOUND erroneous character...."&&(for /f "t
 if %errorlevel%==989 echo.check quote&goto looper
 if %errorlevel%==9009 echo.check invalid quoting&goto looper
 if /I "%str%"=="cls"  (cls&goto funky_loooper)
+if /I "%str%"=="exit"  (Exit /B)
 if /I "%str%" NEQ "youtube"  (goto continue)
 :enterurl
 set /p youtube_url=Enter Url 
