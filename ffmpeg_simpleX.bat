@@ -8,7 +8,7 @@ echo *
 echo * ffmpeg video length calculator (time format hh:mm to seconds)
 echo *-------------------------------------------------------------
 echo [[[[]     Usage: Enter time in MM:SS or HH:MM:SS           []]]]
-echo.secret command: youtube
+echo.secret command: youtube/clear youtube
 (if defined run_formickeymouse if %run_formickeymouse%==1 Exit /B)
 :looper
 set /a hour=0
@@ -18,7 +18,6 @@ if defined watchis for /f "tokens=*" %%i in ("https://www.youtube.com/watch?v=%w
 set str=
 echo|set /p=^^^>
 set /p str=
-set watchis=
 set /a come_here=0
 call :seterrorlevel989
 if %come_here%==1 goto next_X
@@ -33,8 +32,10 @@ echo %str%| findstr /r "["\"]"&&echo."FOUND erroneous character...."&&(for /f "t
 (if "%str%"==""  goto looper)
 if %errorlevel%==989 echo.check quote&goto looper
 if %errorlevel%==9009 echo.check invalid quoting&goto looper
+echo %str%|find "clear youtube" >NUL&&(for /f "tokens=1,2 delims= " %%i in ("%str%") do set str=%%i %%j) || (set str=%str: =%)
 if /I "%str%"=="cls"  (cls&goto funky_loooper)
 if /I "%str%"=="exit"  (Exit /B)
+if /I "%str%"=="clear youtube"  (set watchis=&goto looper)
 if /I "%str%" NEQ "youtube"  (goto continue)
 :enterurl
 set /p youtube_url=Enter Url 
@@ -80,19 +81,20 @@ goto youtube
 :processyoutu.be
 set /a tokens=4
 for /f "tokens=%tokens% delims=.:?/" %%i in ("%youtube_url%") do set watchis=%%i
-goto continue
+goto printwatchis
 :wwwprocessyoutube
 
 set /a tokens=7
 for /f "tokens=%tokens% delims=^=.:?/" %%i in ("%youtube_url%") do set watchis=%%i
-goto continue
+goto printwatchis
 :processyoutube
 
 set /a tokens=6
 for /f "tokens=%tokens% delims=^=.:?/" %%i in ("%youtube_url%") do set watchis=%%i
-goto continue
+goto printwatchis
+:printwatchis
+if defined watchis set str=&set /p str=-^>
 :continue
-if defined watchis set str=&set /p str=Enter video time ^>
 set nonsense_bydefault=%%i
 @echo off
 rem set args=%2
