@@ -7,15 +7,14 @@
 *-------------------------------------------------------------
 [[[[]     Usage: Enter time in MM:SS or HH:MM:SS           []]]]
 secret command: youtube/clear youtube
-https://www.youtube.com/watch?v=4wFVC6Zxg1Q&t=1331
->22:10
-1330 seconds
-https://www.youtube.com/watch?v=4wFVC6Zxg1Q&t=1330
 >
-https://www.youtube.com/watch?v=4wFVC6Zxg1Q&t=1330
 >1.22
 82 seconds
-https://www.youtube.com/watch?v=4wFVC6Zxg1Q&t=82
+>youtube
+enter url https://www.youtube.com/watch?v=4wFVC6Zxg1Q
+->22:10
+1330 seconds
+https://www.youtube.com/watch?v=4wFVC6Zxg1Q&t=1330
 >clear youtube
 >33.11
 1991 seconds
