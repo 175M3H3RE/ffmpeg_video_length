@@ -3,7 +3,7 @@ if "%1" NEQ "chutiya" start cmd /k ""%~fp0" chutiya"&goto :eof
 set /a counter=0
 set /a run_formickeymouse=0
 :funky_loooper
-title fUNkY raBBiT (C} slEASY Soul .
+title fUNkY raBBiT (C} slEAZY Soul .
 echo *
 echo * ffmpeg video length calculator (time format hh:mm to seconds)
 echo *-------------------------------------------------------------
