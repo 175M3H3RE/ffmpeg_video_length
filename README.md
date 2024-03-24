@@ -1,5 +1,4 @@
-`ffmpeg_simpleX.bat` SIMPLE VERSION with `youtube` command (RECOMMENDED)
-<br>`ffmpeg_seconds.bat` For ffmpeg Users, u can save timestamps in a file, show the list
+`ffmpeg_simpleX.bat` SIMPLE \*RECOMMENDED\* Version with \`youtube\` command
 
 #### Sample Console Output:
 ```
