@@ -1,4 +1,4 @@
-`ffmpeg_simpleX.bat` SIMPLE \*RECOMMENDED\* Version with \`youtube\` command
+`ffmpeg_simpleX.bat` SIMPLE \*RECOMMENDED\* Version with `Youtube` command
 
 #### Sample Console Output:
 ```
