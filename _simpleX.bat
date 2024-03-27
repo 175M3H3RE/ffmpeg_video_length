@@ -5,7 +5,7 @@ set /a run_formickeymouse=0
 :funky_loooper
 title fUNkY raBBiT (C} slEAZY Soul .
 echo *
-echo * ffmpeg video length calculator (time format hh:mm to seconds)
+echo * video length calculator (time format hh:mm to seconds)
 echo *-------------------------------------------------------------
 echo [[[[]     Usage: Enter time in MM:SS or HH:MM:SS           []]]]
 echo.secret command: youtube/clear youtube
@@ -109,7 +109,7 @@ if "%tokens_found%"=="" goto skip3
 if "%tokens_found%" NEQ "%nonsense_bydefault%" (echo %tokens_found%|findstr /r "^[0-9]*$" >NUL&&(goto process3) || (echo.Invalid Third Char Found&goto looper) )
 
 :skip3
-title ffmpeg video length calc.
+title video length calc.
 echo %str%|findstr /r "^[0-9:.]*$">NUL&&echo.>NUL || (echo.Non-number or invalid command&timeout 5 >NUL&cls&goto funky_loooper)
 set stumped=%%j
 for /f "tokens=1,2 delims=:" %%i in ("%str%") do set /a hour=%%i&if "x%%jx" NEQ "xx" set /a minute=%%j
@@ -121,7 +121,7 @@ if defined args if "%args%"=="/s" (echo %total% >>%savetofile%)
 echo %total% seconds
 goto :save
 :process3
-title ffmpeg video length calc.
+title video length calc.
 for /f "tokens=1,2,3 delims=:" %%i in ("%str%") do set /a hour=%%i&set /a minute=%%j&set /a seconds=%%k
 set /a hour=hour*60*60
 set /a minute=minute*60
