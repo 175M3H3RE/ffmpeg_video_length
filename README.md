@@ -1,4 +1,4 @@
-`_simpleX.bat` `*Recommended* Version with Youtube command`
+`_simpleX.bat` `Version with Youtube command`
 
 #### Sample Console:
 ```
