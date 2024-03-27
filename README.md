@@ -1,8 +1,8 @@
-`ffmpeg_simpleX.bat` `*Recommended* Version with Youtube command`
+`_simpleX.bat` `*Recommended* Version with Youtube command`
 
 #### Sample Console:
 ```
-* ffmpeg video length calculator (time format hh:mm to seconds)
+* video length calculator (time format hh:mm to seconds)
 *-------------------------------------------------------------
 [[[[]     Usage: Enter time in MM:SS or HH:MM:SS           []]]]
 secret command: youtube/clear youtube
